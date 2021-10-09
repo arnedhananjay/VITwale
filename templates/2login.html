@@ -1,0 +1,85 @@
+
+{% extends "00cat3.html" %}
+{% block x_script %}
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="1011033670886-tnm4j0l54lcaoea6jgi11cg17dvnqvb0.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="google-signin-hosted_domain" content="vitbhopal.ac.in">
+{% endblock %}
+{% block body %}
+<div class="page-wraper">
+	<div id="loading-icon-bx"></div>
+	<div class="account-form">
+		<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+			<a href="https://vitwale.in/"><h1 style="color: white;">VITwale</h1></a>
+		</div>
+		<div class="account-form-inner">
+			<div class="account-container">
+				<div class="heading-bx left">
+					<h2 class="title-head">Join VITwale <span>Community</span></h2>
+					<small>Only People With VIT email ID can join.</small>
+				</div>	
+				<form class="contact-bx" method="POST"  action = "/login" id="form">
+					<div class="row placeani">
+					
+								
+									<input name="email" id="email" type="email" hidden required class="form-control">
+					
+				
+									<input name="name" id="name" type="text" hidden required class="form-control">
+					
+				
+					
+									<input name="pass" hidden id="pass" type="password" class="form-control" required="">
+					
+						
+						<input name="propic" id="propic" type="text" hidden required >
+					
+				
+				
+							<button hidden name="submit" id="submit" type="submit" value="Submit" class="btn button-md">Login</button>
+					
+						<div class="col-lg-12">
+							<div class="d-flex">
+								<div class="col-12"><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</form>
+			
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block x_down_scri %}
+<!-- External JavaScripts -->
+
+<script>
+	function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  document.getElementById('name').value = profile.getName(); 
+  document.getElementById('email').value = profile.getEmail();
+  document.getElementById('pass').value = profile.getId();
+  document.getElementById('propic').value = profile.getImageUrl();
+  document.getElementById("submit").click();
+}
+
+ function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+		var auth2 = gapi.auth2.init({
+        client_id: "1011033670886-tnm4j0l54lcaoea6jgi11cg17dvnqvb0.apps.googleusercontent.com",
+        hosted_domain: 'vitbhopal.ac.in'
+    });
+
+      });
+    }
+
+</script>
+{% endblock %}
+
