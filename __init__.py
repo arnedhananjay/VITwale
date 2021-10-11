@@ -1173,17 +1173,6 @@ def check_user_avail():
     return "Checking"
 
 
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    paper_name = db.Column(db.String(255), nullable=False)
-    paper_course = db.Column(db.String(255), nullable=False)
-    paper_cc = db.Column(db.String(255), nullable=False)
-    paper_sem = db.Column(db.String(255), nullable=False)
-    paper_year = db.Column(db.String(255), nullable=False)
-    paper_faculty = db.Column(db.String(255), nullable=False)
-    paper_link = db.Column(db.String(255), nullable=False)
-    paper_sol_link = db.Column(db.String(255), nullable=True)
-    paper_sol_by_username = db.Column(db.String(255), nullable=True)
-    date_added = db.Column(db.String(255), nullable=True)
 
 
 @app.route("/addpaper" , methods = ['GET' , 'POST'])
@@ -1224,5 +1213,3 @@ def paper():
 
 
     
-# if __name__ == "__main__":
-#     app.run(debug = True)
